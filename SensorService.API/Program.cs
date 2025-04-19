@@ -1,6 +1,9 @@
+using SensorService.Application.Interfaces;
+using SensorService.Infrastructure.Repositories;
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
+builder.Services.AddSingleton<IVehicleEventRepository, InMemoryVehicleEventRepository>();
 
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle

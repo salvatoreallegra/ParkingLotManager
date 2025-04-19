@@ -7,6 +7,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\SensorService.Application\SensorService.Application.csproj" />
     <ProjectReference Include="..\SensorService.Domain\SensorService.Domain.csproj" />
   </ItemGroup>
 
