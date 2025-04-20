@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using SensorService.Api.Services;
 using SensorService.Application.Interfaces;
 using SensorService.Domain.Entities;
 
@@ -10,16 +11,21 @@ namespace SensorService.API.Controllers
     public class VehicleEventsController : ControllerBase
     {
         private readonly IVehicleEventRepository _repo;
-        public VehicleEventsController(IVehicleEventRepository repo)
+        private readonly SqsSender _sqs;
+        public VehicleEventsController(IVehicleEventRepository repo, SqsSender sqs)
         {
             _repo = repo;
+            _sqs = sqs;
         }
 
         [HttpPost("vehicle-entry")]
-        public IActionResult RegisterVehicle([FromBody] VehicleEvent vehicleEvent)
+        public async Task<IActionResult> RegisterVehicle([FromBody] VehicleEvent vehicleEvent)
         {
             vehicleEvent.Timestamp = DateTime.UtcNow;
             _repo.Add(vehicleEvent);
+
+            await _sqs.SendVehicleEventAsync(vehicleEvent);
+
             return Ok(vehicleEvent);
         }
 
