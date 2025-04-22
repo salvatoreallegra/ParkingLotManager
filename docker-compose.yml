@@ -3,8 +3,8 @@ version: '3.8'
 services:
   sensorservice:
     build:
-      context: ./SensorService.API
-      dockerfile: Dockerfile
+      context: .
+      dockerfile: SensorService.Api/Dockerfile
     ports:
       - "5001:80"
     environment:
@@ -14,8 +14,8 @@ services:
 
   analyticsservice:
     build:
-      context: ./AnalyticsService.API
-      dockerfile: Dockerfile
+      context: .
+      dockerfile: AnalyticsService.Api/Dockerfile
     environment:
       - AWS_ACCESS_KEY_ID=${AWS_ACCESS_KEY_ID}
       - AWS_SECRET_ACCESS_KEY=${AWS_SECRET_ACCESS_KEY}
