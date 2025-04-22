@@ -3,20 +3,20 @@ version: '3.8'
 services:
   sensorservice:
     build:
-      context: ../SensorService.Api
+      context: ./SensorService.API
       dockerfile: Dockerfile
     ports:
       - "5001:80"
     environment:
       - AWS_ACCESS_KEY_ID=${AWS_ACCESS_KEY_ID}
       - AWS_SECRET_ACCESS_KEY=${AWS_SECRET_ACCESS_KEY}
-      - AWS_REGION=us-west-1
+      - AWS_REGION=${AWS_REGION}
 
   analyticsservice:
     build:
-      context: ../AnalyticsService.Api
+      context: ./AnalyticsService.API
       dockerfile: Dockerfile
     environment:
       - AWS_ACCESS_KEY_ID=${AWS_ACCESS_KEY_ID}
       - AWS_SECRET_ACCESS_KEY=${AWS_SECRET_ACCESS_KEY}
-      - AWS_REGION=us-west-1
+      - AWS_REGION=${AWS_REGION}

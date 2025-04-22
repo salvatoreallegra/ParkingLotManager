@@ -21,6 +21,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AnalyticsService.API", "Ana
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{78BB6486-EE3E-4839-B2D6-07A0D5E0BDF9}"
 	ProjectSection(SolutionItems) = preProject
+		.env = .env
 		docker-compose.yaml = docker-compose.yaml
 	EndProjectSection
 EndProject

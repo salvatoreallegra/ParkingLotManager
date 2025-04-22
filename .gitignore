@@ -364,3 +364,7 @@ FodyWeavers.xsd
 
 # Remove for docker aws credentials
 **/launchSettings.json
+
+#will be storing sensitive information for docker compose
+.env
+
