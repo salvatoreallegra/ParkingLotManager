@@ -6,12 +6,12 @@ WORKDIR /src
 COPY ["AnalyticsService.Api/AnalyticsService.Api.csproj", "AnalyticsService.Api/"]
 RUN dotnet restore "AnalyticsService.Api/AnalyticsService.Api.csproj"
 
-# Copy everything and build
+# Copy all files and build
 COPY . .
 WORKDIR /src/AnalyticsService.Api
 RUN dotnet publish -c Release -o /app/publish
 
-# Stage 2: Run
+# Stage 2: Runtime
 FROM mcr.microsoft.com/dotnet/aspnet:8.0
 WORKDIR /app
 COPY --from=build /app/publish .
